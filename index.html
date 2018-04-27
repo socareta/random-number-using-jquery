@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Random number using jquery">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Random NUmber</title>
+  <script src="jquery.min.js"></script>
+  <style type="text/css">
+    .output {
+    margin: 20px;
+    padding: 20px;
+    background: gray;
+    border-radius: 10px;
+    font-size: 80px;
+    width: 40px;
+    color: white;
+    float: left;
+}
+  </style>
+</head>
+<body>
+  <h3>Please pres SPACE to stop random!!!</h3>
+  <h3>Press F5 to start</h3>
+  <div class="output" id="output0">0</div>
+  <div class="output" id="output1">0</div>
+  <div class="output" id="output2">0</div>
+  <div class="output" id="output3">0</div>
+  <div class="output" id="output4">0</div>
+  <div class="output" id="output5">0</div>
+  <script type="text/javascript">
+    var numbers = [1,5,2,8,2,0];
+    var stopAnimation=false;
+function generateNumber(el) {
+  
+  var duration = 2000;
+
+  var output = $('#' + el); // Start ID with letter
+  var started = new Date().getTime();
+
+  animationTimer = setInterval(function() {
+    if (stopAnimation === true ) {
+      clearInterval(animationTimer); // Stop the loop
+      output.text(desired); // Print desired number in case it stopped at a different one due to duration expiration
+      generateNumber(index + 1);
+     
+    } else {
+      output.text(
+        '' +
+        Math.floor(Math.random() * 10) 
+      );
+    }
+  }, 100);
+}
+
+    generateNumber('output0',false);
+    generateNumber('output1',false);
+    generateNumber('output2',false);
+    generateNumber('output3',false);
+    generateNumber('output4',false);
+    generateNumber('output5',false);
+    
+    $("body").on('keyup', function (e) {
+      if (e.keyCode === 32) {
+          stopAnimation=true;
+         if($('#output0').text()==0){
+            $('#output0').text(Math.random() * 10);
+          }
+          // alert('stop');
+      }   
+  });
+  </script>
+
+</body>
+</html>
